@@ -1,0 +1,55 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.13'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+def dubboVersion = '2.9.4.4'
+
+java {
+	sourceCompatibility = '1.8'
+}
+
+repositories {
+	maven {
+		allowInsecureProtocol = true
+		url "http://maven.temu.team/repository/maven-public/"
+	}
+	maven {
+		url 'https://maven.aliyun.com/repository/public/'
+	}
+
+	mavenLocal()
+	mavenCentral()
+}
+
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.6.3'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jdbc', version: '2.7.7'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.7.4'
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+	// https://mvnrepository.com/artifact/org.apache.activemq/artemis-jms-server
+	implementation group: 'org.apache.activemq', name: 'artemis-jms-server', version: '2.6.4'
+	// https://mvnrepository.com/artifact/org.apache.dubbo/dubbo
+	//implementation group: 'org.apache.dubbo', name: 'dubbo', version: '2.7.23'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.7.12'
+
+	implementation "com.alibaba:dubbo:$dubboVersion"
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'com.baomidou', name: 'mybatis-plus-boot-starter' , version: '3.5.2'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-artemis', version: '2.7.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

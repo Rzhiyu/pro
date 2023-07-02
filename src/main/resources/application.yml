@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/project?characterEncoding=utf8
+    username: root
+    password: NDream0214
+    driver-class-name: com.mysql.jdbc.Driver
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+      mode: always
+  jpa:
+    show-sql: on
+#  artemis:
+#    mode: embedded
+  ##    user: user
+  ##    password: 123456
+  ##    broker-url: tcp://8.130.72.20:61616
+  data:
+    rest:
+      base-path: api-data
+  jms:
+    template:
+      default-destination: mybroker
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
